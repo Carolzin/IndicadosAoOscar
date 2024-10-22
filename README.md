@@ -1,21 +1,38 @@
 # Indicados Ao Oscar 🏆
 
-
-
 **Quantas vezes Natalie Portman foi indicada ao Oscar?**
-R: 3 vezes
+R: 3 vezes.
 
 Q:
 ```sql
-SELECT COUNT(*) FROM indicados WHERE "Name" Like "%Natalie Portman%";
+SELECT COUNT(*) FROM indicados_ao_oscar WHERE nome_do_indicado Like "%Natalie Portman%";
 
 ```
 
 **Quantos Oscars Natalie Portman ganhou?**
+R: 1 vez.
+
+Q:
+```sql
+SELECT COUNT(*) FROM indicados_ao_oscar WHERE nome_do_indicado  Like "%Natalie Portman%" AND vencedor = "true";
+````
 
 **Amy Adams já ganhou algum Oscar?**
+R: Não.
+
+Q:
+```sql
+SELECT * FROM indicados_ao_oscar WHERE nome_do_indicado  Like "%Amy Adams%";
+```
 
 **A série de filmes Toy Story ganhou um Oscar em quais anos?**
+R: Sim, 2011, 2011 e 2020.
+
+Q:
+
+```sql
+SELECT ano_cerimonia FROM indicados_ao_oscar WHERE nome_do_filme Like "%Toy Story%" AND vencedor = "true"
+```
 
 **A partir de que ano que a categoria "Actress" deixa de existir?**
 
@@ -24,6 +41,12 @@ SELECT COUNT(*) FROM indicados WHERE "Name" Like "%Natalie Portman%";
 **Na campo "Vencedor", altere todos os valores com "true" para 1 e todos os valores "false" para 0.**
 
 **Em qual edição do Oscar "Crash" concorreu ao Oscar?**
+R: 2006
+
+Q:
+```sql
+SELECT ano_cerimonia FROM indicados_ao_oscar WHERE nome_do_filme Like "%Crash";
+```
 
 **O filme Central do Brasil aparece no Oscar?**
 

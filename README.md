@@ -49,6 +49,12 @@ SELECT ano_cerimonia FROM indicados_ao_oscar WHERE nome_do_filme Like "%Crash";
 ```
 
 **O filme Central do Brasil aparece no Oscar?**
+R: Não.
+
+Q:
+```sql
+SELECT COUNT(*) > 0 FROM indicados_ao_oscar WHERE nome_do_filme Like "%Central do Brasil%";
+```
 
 **Inclua no banco 3 filmes que nunca foram nem nomeados ao Oscar, mas que merecem ser.**
 

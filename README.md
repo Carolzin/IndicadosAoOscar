@@ -14,7 +14,8 @@ R: 1 vez.
 
 Q:
 ```sql
-SELECT COUNT(*) FROM indicados_ao_oscar WHERE nome_do_indicado  Like "%Natalie Portman%" AND vencedor = "true";
+SELECT COUNT(*) FROM indicados_ao_oscar
+WHERE nome_do_indicado Like "%Natalie Portman%" AND vencedor = "true";
 ````
 
 **Amy Adams já ganhou algum Oscar?**
@@ -59,9 +60,29 @@ SELECT COUNT(*) > 0 FROM indicados_ao_oscar WHERE nome_do_filme Like "%Central d
 **Inclua no banco 3 filmes que nunca foram nem nomeados ao Oscar, mas que merecem ser.**
 
 **Denzel Washington já ganhou algum Oscar?**
+R: Sim, 2.
+
+Q:
+```sql
+SELECT COUNT(*) 
+FROM indicados_ao_oscar
+WHERE nome_do_indicado LIKE '%Denzel Washington%'
+AND vencedor = 'true';
+;
+```
+
 
 **Quais os filmes que ganharam o Oscar de Melhor Filme?**
 
 **Bonus: Quais os filmes que ganharam o Oscar de Melhor Filme e Melhor Diretor na mesma cerimonia?**
 
 **Bonus: Denzel Washington e Jamie Foxx já concorreram ao Oscar no mesmo ano?**
+R: Sim, em 2017.
+
+```sql
+SELECT DISTINCT ano_cerimonia 
+FROM indicados_ao_oscar
+WHERE (nome_do_indicado LIKE '%Denzel Washington%' OR nome_do_indicado LIKE '%Jamie Foxx%')
+GROUP BY ano_cerimonia
+HAVING COUNT(DISTINCT nome_do_indicado) > 1;
+```
